@@ -3,7 +3,7 @@ class Stars extends GameObject {
 
   
  Stars() {
-    location = new PVector (random(0,1000),random(0,800));
+    location = new PVector (random(0,1100),random(0,800));
 
 
    

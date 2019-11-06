@@ -4,6 +4,7 @@ abstract class GameObject {
   PVector location;
   int lives;
   PVector velocity;
+    PVector velomax;
   PVector direction;
 
   GameObject() {

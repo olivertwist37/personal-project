@@ -17,22 +17,26 @@ PImage map;
 
 int no=100;
 int t=0;
-
+int px,py;
 
 
 Ship myShip;
 int shipTimer;
 ArrayList<GameObject> myGameObjects;
 PImage Shipimg;
+PImage MShip;
+int l=0;
 int roomx=97;
 int roomy=97;
 int mapWidth, mapHeight;
 boolean n, s, e, w;
 boolean built=true;
+boolean ShipInteract;
 void setup() {
 
   size (1100, 800);
  Shipimg =loadImage("Ship.png");
+ 
   mode=intro;
     myShip = new Ship();
     imageMode(CENTER);
@@ -41,10 +45,15 @@ void setup() {
     
     myGameObjects = new ArrayList<GameObject>();
   
+  MShip =loadImage("MotherShip.png");
+  MShip.resize(700, 600);
+  
+  
   
   map=loadImage("map.png");
   mapWidth= map.width;
   mapHeight= map.height;
+  
 }
 
 void draw() {

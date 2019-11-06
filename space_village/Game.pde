@@ -1,5 +1,6 @@
-
+int j;
 void game() {
+  
 
   shipTimer--;
   background(20);
@@ -18,15 +19,20 @@ void game() {
       j++;
     }
   }
+  
+
+  px=roomx;
+  py=roomy;
+
 
 
   //background(white);
   fill (30, 100);
-  rect (0, 0, width, height);
+  //rect (0, 0, width, height);
   switchRoom();
   //color here = map.get(roomx,roomy);
   fill (30, 100);
-  rect (0, 0, width, height);
+ // rect (0, 0, width, height);
 
   if (n) {
     //top
@@ -59,14 +65,30 @@ void game() {
 
 
   ///////-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  myShip.show();
-  myShip.act();
+ 
+
   println("x"+roomx);
   println("y"+roomy);
 
-  if (starCount() <roomx+roomy/2) { 
+
+  while (starCount() <roomx+roomy) { 
     myGameObjects.add(new Stars());
   }
+   if (px!=roomx||py!=roomy) { 
+starKiller();
+  }
+  if (starCount() >roomx+roomy) { 
+starKiller();
+  }
+  
+    if (l==0){
+     myGameObjects.add(new MotherShip());
+     l++;
+  }
+  
+  myShip.show();
+  myShip.act();
+  
 }
 
 

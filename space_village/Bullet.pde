@@ -16,7 +16,7 @@ class Bullet extends GameObject {
   }
   void show() {
     if (age<200&&lives>0) {
-      fill(255);
+      fill(255,100,100);
       ellipse(location.x, location.y, size, size);
     } else {
       velocity.setMag (0);
@@ -27,7 +27,7 @@ class Bullet extends GameObject {
   }
   void act() {
     super.act();
- 
+ location.add(velocity);
     
     
     age++;

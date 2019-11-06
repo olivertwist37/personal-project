@@ -1,8 +1,10 @@
 class Ship extends GameObject {
 
   //instance variables
-
-
+// changeable
+float velo=5;
+float fireRate=100;
+ //changeable
   int i,x,y;
   PVector direction;
 float thrusters;
@@ -12,6 +14,7 @@ float thrusters;
         thrusters= -0.024;
     location = new PVector (width/2, height/2);
     velocity = new PVector(0, 0);
+      velomax = new PVector(10, 10);
     direction = new PVector (0, thrusters);
     i=51;
   }
@@ -25,7 +28,7 @@ float thrusters;
     image(Shipimg, 0, 0);
     stroke(255);
     strokeWeight(1);
-    line(0, 0, 25, 0);
+   // line(0, 0, 25, 0);
 fill(100,100,255,shipTimer*2);
 noStroke();
 ellipse(0,0,70,70);
@@ -42,6 +45,12 @@ ellipse(0,0,70,70);
   void act() {
     
     super.act();
+    if (velocity.mag()>=velo){
+     velocity.setMag(velo);; 
+    }
+    
+    
+    
     location.add(velocity);
     if (roomx==98){
       roomx=3;
@@ -71,7 +80,7 @@ if (lives<=0){
     if (rightkey) direction.rotate(radians(3) );
 
     i++;
-    if (spacekey&&i>30) {
+    if (spacekey&&i>fireRate) {
       myGameObjects.add(new Bullet());
       i=0;
     }
@@ -103,7 +112,7 @@ location = new PVector(random(50, 950), random(50, 750));
        location.y=850;
        switchRoom();
        built=false;
-   
+   starKiller();
      }
     
   }
@@ -113,7 +122,7 @@ location = new PVector(random(50, 950), random(50, 750));
        location.y=-50;
        switchRoom();
        built=false;
-     
+     starKiller();
      }
      
   }
@@ -123,7 +132,7 @@ location = new PVector(random(50, 950), random(50, 750));
        location.x=-50;
        switchRoom();
        built=false;
-      
+      starKiller();
      }
      
   }
@@ -133,7 +142,7 @@ location = new PVector(random(50, 950), random(50, 750));
        location.x=1150;
        switchRoom();
       built=false;
-     
+     starKiller();
      }
      
   }
