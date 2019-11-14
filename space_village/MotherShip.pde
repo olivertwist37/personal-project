@@ -25,7 +25,7 @@ if (roomx==97&&roomy==97){
   void act() {
     super.act();
 if (roomx==97&&roomy==97){
-  if (dist(location.x,location.y,myShip.location.x,myShip.location.y)<100){
+  if (dist(location.x,location.y,myShip.location.x,myShip.location.y)<150){
     ShipInteract=true;
     
   }else{

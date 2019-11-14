@@ -81,6 +81,7 @@ starKiller();
 starKiller();
   }
   
+  
     if (l==0){
      myGameObjects.add(new MotherShip());
      l++;
@@ -89,6 +90,12 @@ starKiller();
   myShip.show();
   myShip.act();
   
+  if (ShipInteract==true){
+    shipInteract();
+  }else{
+    
+    
+  }
 }
 
 

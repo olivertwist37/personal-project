@@ -26,5 +26,9 @@ class Stars extends GameObject {
   void act() {
     super.act();
 
+if (roomx==97&&roomy==97&&dist(location.x,location.y,width/2,height/2)<290){
+  lives=0;
+}
+
   }
 }

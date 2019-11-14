@@ -8,10 +8,13 @@ float fireRate=100;
   int i,x,y;
   PVector direction;
 float thrusters;
+float thrust;
   //constructor(s)
+  
   Ship() {
     lives = 3;
-        thrusters= -0.024;
+  thrust= -0.02;
+        thrusters= thrust;
     location = new PVector (width/2, height/2);
     velocity = new PVector(0, 0);
       velomax = new PVector(10, 10);
