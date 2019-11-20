@@ -1,4 +1,6 @@
 int mode,a,coin;
+int xp;
+float fuel=100;
 //declaring constants
 final int intro = 0;
 final int game = 1;

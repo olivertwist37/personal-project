@@ -4,9 +4,11 @@ class Ship extends GameObject {
 // changeable
 float velo=5;
 float fireRate=100;
+float effeciency=0.1;
  //changeable
   int i,x,y;
   PVector direction;
+    PVector airResistance;
 float thrusters;
 float thrust;
   //constructor(s)
@@ -19,6 +21,7 @@ float thrust;
     velocity = new PVector(0, 0);
       velomax = new PVector(10, 10);
     direction = new PVector (0, thrusters);
+    airResistance =new PVector (0.004,0.004);
     i=51;
   }
 
@@ -48,6 +51,32 @@ ellipse(0,0,70,70);
   void act() {
     
     super.act();
+    if (velocity.x<-0.01){
+    //velocity.x.add(airResistance.x);
+    velocity.x=velocity.x+airResistance.x;
+    }
+    
+        if (velocity.x>0.01){
+   // velocity.x.sub(airResistance.x);
+    velocity.x=velocity.x-airResistance.x;
+    }
+    
+        if (velocity.y<-0.01){
+   // velocity.y.add(airResistance.y);
+    velocity.y=velocity.y+airResistance.y;
+    }
+    
+        if (velocity.y>0.01){
+   // velocity.y.sub(airResistance.y);
+       velocity.y=velocity.y-airResistance.y;
+    }
+    println("velo"+velocity.x);
+    
+    
+    
+    
+    
+    
     if (velocity.mag()>=velo){
      velocity.setMag(velo);; 
     }
@@ -73,12 +102,16 @@ if (lives<=0){
    mode = gameOver;
 }
 
-
+if (fuel>0){
     if (upkey){
       velocity.add(direction);
-    
+    fuel = fuel-effeciency;
     }
-    if (downkey) velocity.sub(direction);
+    if (downkey) {
+      velocity.sub(direction);
+      fuel = fuel-effeciency;
+    }
+}
     if (leftkey) direction.rotate(-radians(3) );
     if (rightkey) direction.rotate(radians(3) );
 
