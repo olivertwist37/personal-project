@@ -27,6 +27,7 @@ int shipTimer;
 ArrayList<GameObject> myGameObjects;
 PImage Shipimg;
 PImage MShip;
+PImage Bullet;
 int l=0;
 int roomx=97;
 int roomy=97;
@@ -39,6 +40,10 @@ void setup() {
   size (1100, 800);
  Shipimg =loadImage("Ship.png");
  
+ 
+  Bullet =loadImage("bullet.png");
+  Bullet.resize(50,50);
+  
   mode=intro;
     myShip = new Ship();
     imageMode(CENTER);

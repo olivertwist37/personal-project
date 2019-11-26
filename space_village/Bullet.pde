@@ -1,7 +1,7 @@
 class Bullet extends GameObject {
 
-  int age,t;
-  
+  int age, t;
+
   Bullet() {
     location = new PVector (myShip.location.x, myShip.location.y);
     //location.x=myShip.location.x;
@@ -10,31 +10,39 @@ class Bullet extends GameObject {
     //velocity.y= myShip.direction.y;
     velocity = new PVector (myShip.direction.x, myShip.direction.y);
     velocity.setMag(5);
+    direction = new PVector (myShip.direction.x,myShip.direction.y);
     age=0;
     lives=1;
-    size=10;t=0;
+    size=10;
+    t=0;
   }
   void show() {
+
+    pushMatrix();    
+    int j=0;
+
+
     if (age<200&&lives>0) {
-      fill(255,100,100);
-      ellipse(location.x, location.y, size, size);
+      translate(location.x, location.y);
+      if (j==0) {
+      rotate(direction.heading());
+        j++;
+      }
+      image(Bullet, 0, 0);
     } else {
-      velocity.setMag (0);
-      location.x =-1000;
-      
-      
+      lives=0;
     }
+    popMatrix();
   }
   void act() {
     super.act();
- location.add(velocity);
-    
-    
+    location.add(velocity);
+
+
     age++;
-if(age>=150){
-  lives=0;
-  
-}
+    if (age>=150) {
+      lives=0;
+    }
     //    if(location.x>1040){
 
     //}
